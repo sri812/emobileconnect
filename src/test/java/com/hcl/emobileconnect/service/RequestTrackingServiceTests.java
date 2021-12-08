@@ -3,12 +3,10 @@ package com.hcl.emobileconnect.service;
 import com.hcl.emobileconnect.dao.RequestRepository;
 import com.hcl.emobileconnect.entity.Request;
 import com.hcl.emobileconnect.exception.RecordNotFoundException;
-//import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -28,11 +26,6 @@ class RequestTrackingServiceTests {
     @Mock
     RequestRepository requestRepository;
 
-//    @Before
-//    public void init() {
-//        MockitoAnnotations.openMocks(this);
-//    }
-
     @Test
     public void testSuccessGetStatusByRequestID() throws RecordNotFoundException {
         Request dummyRequest = new Request();
@@ -47,7 +40,6 @@ class RequestTrackingServiceTests {
         String status  = "";
         try {
             trackingService.getStatusByRequestID(2).toString();
-            System.out.println("thissss" + trackingService.getStatusByRequestID(2).toString());
         }
         catch(Exception e) {
             status = e.getMessage();
