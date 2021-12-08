@@ -6,6 +6,8 @@ import com.hcl.emobileconnect.exception.RecordNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import static com.hcl.emobileconnect.eMobileconnectApplicationConstants.*;
+
 @Service
 public class RequestTrackingService {
 
@@ -14,15 +16,8 @@ public class RequestTrackingService {
 
     public String getStatusByRequestID(int requestID) throws RecordNotFoundException {
         Request request = requestRepository.findById(requestID)
-                .orElseThrow(() -> new RecordNotFoundException("Request ID not found in the system. Please try again"));
+                .orElseThrow(() -> new RecordNotFoundException(REQUEST_ID_NOT_FOUND));
 
-        return request.getStatus();
-
-        //TODO 2: LOMBOK WITH <OPTIONAL> NOT  WORKING; CHECK THIS
-        // TODO 1: call the method from the DAO JPA REPOSITORY
-
-
-
+        return request.getStatus().toString();
     }
-
 }

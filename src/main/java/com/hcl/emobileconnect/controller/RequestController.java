@@ -5,22 +5,24 @@ import com.hcl.emobileconnect.service.RequestTrackingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import static com.hcl.emobileconnect.eMobileconnectApplicationConstants.*;
+
 @RestController
 @RequestMapping("/customers")
-class RequestController {
+public class RequestController {
 
     @Autowired
     private RequestTrackingService requestTrackingService;
 
-// REQUEST TRACKING FOR CUSTOMER : Modified the API endpoint to customers/requests/{requestID}
-    @GetMapping(value = "requests")
+    // REQUEST TRACKING FOR CUSTOMER : Modified the API endpoint to customers/requests/{requestID}
+    @GetMapping(value = "/requests/{id}")
     public String getStatusByRequestID(@PathVariable Integer id) {
         try {
             return requestTrackingService.getStatusByRequestID(id);
         } catch (RecordNotFoundException e) {
-            return "Request ID not found in the system. Please try again.";
+            return REQUEST_ID_NOT_FOUND;
         } catch (Exception e) {
-            return "Unknown Error. Please try again.";
+            return UNKNOWN_ERROR;
         }
     }
 }

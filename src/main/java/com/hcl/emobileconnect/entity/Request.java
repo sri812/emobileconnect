@@ -15,11 +15,10 @@ import javax.persistence.Table;
 @ToString
 public class Request {
 
-    //TODO 3 : ADD FOREIGN KEY AT THE END OF PROJECT
     @Id
     private Integer requestId;
-//    private Integer customerId;
-//    private Integer planId;
+    private Integer customerId;
+    private Integer planId;
     private Long mobileNumber;
     private String status;
     private String comments;
